@@ -23,6 +23,9 @@
     }
 
     .search-bar {
+      display: flex;
+      align-items: center;
+      position: relative;
       flex-basis: 100%;
       margin-bottom: 0.625rem;
 
@@ -30,6 +33,11 @@
         width: 100%;
         padding: 0.625rem;
         font-size: 1rem;
+      }
+      .clear-button {
+        position: absolute;
+        right: 0.5rem;
+        cursor: pointer;
       }
     }
 
@@ -83,6 +91,10 @@
     }
   }
 
+  .movie-card {
+    cursor: pointer;
+  }
+
   .movie-list {
     &.list {
       display: flex;
@@ -103,7 +115,6 @@
         }
 
         &.selected {
-          /* border: solid 0.5px burlywood; */
           box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
         }
 
@@ -118,7 +129,7 @@
             height: 12rem;
             object-fit: cover;
             margin-right: 1rem;
-            animation: fadeIn 2s;
+            animation: fadeIn 1s;
           }
 
           .title {
@@ -182,7 +193,6 @@
         }
 
         &.selected {
-          /* border: solid 0.5px burlywood; */
           box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
         }
 
@@ -195,7 +205,7 @@
           .poster {
             width: 100%;
             object-fit: cover;
-            animation: fadeIn 2s;
+            animation: fadeIn 1s;
           }
 
           .title {
@@ -318,8 +328,6 @@
 
 @media (min-width: 1024px) {
   .movies-app {
-    padding: 1.5rem;
-
     .app-header {
       flex-wrap: nowrap;
 
@@ -385,6 +393,18 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1536px) {
+  .movies-app {
+    .movie-list {
+      &.grid {
+        .movie-card {
+          flex-basis: calc(20% - 1.05rem);
         }
       }
     }

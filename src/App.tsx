@@ -3,7 +3,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './App.scss';
 import Skeleton from './components/Skeleton';
 import { Movie, ViewMode, Tab, MovieResponse } from './types/movies.types';
-
 const API_URL = `https://api.themoviedb.org/3`;
 const API_KEY = 'be3b358e2ff02d5fa837cb9f1c79ed52';
 
@@ -78,6 +77,10 @@ const Movies: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
+  const clearSearchTerm = () => {
+    setSearchTerm('');
+  };
+
   const goToPreviousPage = () => {
     setPage((prevPage) => prevPage - 1);
     setSearchTerm('');
@@ -96,7 +99,7 @@ const Movies: React.FC = () => {
       return <div className='error-state'>{error}</div>;
     }
     if (filteredMovies.length === 0) {
-      return <div>No movies found.</div>;
+      return <div className='error-state'>No movies found.</div>;
     }
     return filteredMovies.map((movie) => (
       <div
@@ -146,6 +149,17 @@ const Movies: React.FC = () => {
             onChange={handleSearchChange}
             placeholder='Search movies...'
           />
+          {!!searchTerm.length && (
+            <span className='clear-button' onClick={clearSearchTerm}>
+              <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
+                <path d='M0 0h24v24H0z' fill='none' />
+                <path
+                  fill='rgba(0, 0, 0, 0.54)'
+                  d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z'
+                />
+              </svg>
+            </span>
+          )}
         </div>
 
         <div className='tabs'>
@@ -181,7 +195,7 @@ const Movies: React.FC = () => {
 
       <div className={`movie-list ${viewMode}`}>{renderMovies()}</div>
 
-      {!!totalPages && !loading && !searchTerm.length && (
+      {totalPages && !loading && !searchTerm.length ? (
         <div className='pagination'>
           <button onClick={() => setPage(1)} disabled={page === 1}>
             {'<<'}
@@ -199,7 +213,7 @@ const Movies: React.FC = () => {
             Page {page} of {totalPages}
           </span>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

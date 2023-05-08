@@ -22,13 +22,13 @@ The following **optional** features are implemented:
 - [x] All images fade in.
 - [x] Implement lazy load image.
 - [x] Customize the highlight and selection effect of the cell.
-- [x] Improve UX loading by skeleton loading.
+- [x] Improve UX loading by skeleton loading (Grid view).
 - [x] Enhance responsive.
 
 The following **additional** features are implemented:
 
 - [x] Pagination.
-- [x] Other UX improments: scroll to top on refetch.
+- [x] Other UX improvements: scroll to top on refetch, clear search bar.
 
 ## Requirements
 
@@ -39,6 +39,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+[App](https://drive.google.com/file/d/1lCi7oj71pB7IyyBgEHKgMn0nRW02BbWh/view?usp=share_link)
 
 ## Submit
 
